@@ -16,24 +16,48 @@ RSpec.feature "ProductDetails", type: :feature, js: true do
     end
   end
 
-  feature "They navigate to product page" do
+  feature "A User can navigate to product page" do
 
-    scenario "It Has a Quantity within the page" do 
+    scenario "By clicking details button, it will navigate to product page" do
+      visit root_path
+
+      first('article.product').find_link('Details').click
+
+      expect(page).to have_css '.product-detail'
+    end
+
+    scenario "By clicking product image, it will navigate to product page" do
+      visit root_path
+
+      first('.product header img').click
+
+      expect(page).to have_css '.product-detail'
+    end
+
+    scenario "By clicking product title, it will navigate to product page" do 
       visit root_path
       
       first('article.product h4').click
       
-      expect(page).to have_content("Quantity")
-      # save_screenshot
+      expect(page).to have_css '.product-detail'
     end
 
-    scenario "It Will not have the Add button" do
+    scenario "On the product page, it will have the product 'Quantity' " do
+      visit root_path
+    
+      first('article.product h4').click
+    
+      expect(page).to have_content("Quantity")
+      expect(page).to have_css '.product-detail'
+    end
+
+    scenario "On the product page, it will not have the 'Add' button" do
       visit root_path
     
       first('article.product h4').click
     
       expect(page).to_not have_content("Add")
-      # save_screenshot
+      expect(page).to have_css '.product-detail'
     end
 
   end
