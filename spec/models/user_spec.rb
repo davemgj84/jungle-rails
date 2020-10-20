@@ -53,38 +53,38 @@ RSpec.describe User, type: :model do
   describe '.authenticate_with_credentials' do
 
     it 'Authenticates credentials with correct email and password' do
-      new_user = User.new(first_name: "David", last_name: "Jardine", email: "1@mail.com", password: "12345678", password_confirmation: "12345678")
-      new_user.save
-      authenticate = User.authenticate_with_credentials("1@mail.com", "12345678")
-      expect(authenticate).to eql(new_user)
+      @new_user = User.new(first_name: "David", last_name: "Jardine", email: "1@mail.com", password: "12345678", password_confirmation: "12345678")
+      @new_user.save
+      @authenticate = User.authenticate_with_credentials("1@mail.com", "12345678")
+      expect(@authenticate).to eql(@new_user)
     end
 
     it 'Does not authenticate with incorrect password' do
-      new_user = User.new(first_name: "David", last_name: "Jardine", email: "1@mail.com", password: "12345678", password_confirmation: "12345678")
-      new_user.save
-      authenticate = User.authenticate_with_credentials("1@mail.com", "12345")
-      expect(authenticate).to be_nil
+      @new_user = User.new(first_name: "David", last_name: "Jardine", email: "1@mail.com", password: "12345678", password_confirmation: "12345678")
+      @new_user.save
+      @authenticate = User.authenticate_with_credentials("1@mail.com", "12345")
+      expect(@authenticate).to be_nil
     end
 
     it 'Does not authenticate with incorrect email' do
-      new_user = User.new(first_name: "David", last_name: "Jardine", email: "1@mail.com", password: "12345678", password_confirmation: "12345678")
-      new_user.save
-      authenticate = User.authenticate_with_credentials("2@mail.com", "12345678")
-      expect(authenticate).to be_nil
+      @new_user = User.new(first_name: "David", last_name: "Jardine", email: "1@mail.com", password: "12345678", password_confirmation: "12345678")
+      @new_user.save
+      @authenticate = User.authenticate_with_credentials("2@mail.com", "12345678")
+      expect(@authenticate).to be_nil
     end
 
     it 'Authenticates email ignoring the whitespace before or after' do
-      new_user = User.new(first_name: "David", last_name: "Jardine", email: "1@mail.com", password: "12345678", password_confirmation: "12345678")
-      new_user.save
-      authenticate = User.authenticate_with_credentials("    1@mail.com    ", "12345678")
-      expect(authenticate).to eql(new_user)
+      @new_user = User.new(first_name: "David", last_name: "Jardine", email: "1@mail.com", password: "12345678", password_confirmation: "12345678")
+      @new_user.save
+      @authenticate = User.authenticate_with_credentials("    1@mail.com    ", "12345678")
+      expect(@authenticate).to eql(@new_user)
     end
 
-    it 'Authenticates email - is case insensitive' do
-      new_user = User.new(first_name: "David", last_name: "Jardine", email: "eXample@domain.COM", password: "12345678", password_confirmation: "12345678")
-      new_user.save
-      authenticate = User.authenticate_with_credentials("EXAMPLe@DOMAIN.CoM", "12345678")
-      expect(authenticate).to eql(new_user)
+    it 'Authenticates email regardless of case' do
+      @new_user = User.new(first_name: "David", last_name: "Jardine", email: "eXample@domain.COM", password: "12345678", password_confirmation: "12345678")
+      @new_user.save
+      @authenticate = User.authenticate_with_credentials("EXAMPLe@DOMAIN.CoM", "12345678")
+      expect(@authenticate).to eql(@new_user)
     end
 
   end
