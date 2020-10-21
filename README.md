@@ -25,7 +25,7 @@ More information in their docs: <https://stripe.com/docs/testing#cards>
 - PostgreSQL 9.x
 - Stripe
 
-![Homepage]()
-![Product Details]()
-![Create Product]()
-![Signup]()
+![Homepage](https://github.com/davemgj84/jungle-rails/blob/master/docs/home.png?raw=true)
+![Product Details](https://github.com/davemgj84/jungle-rails/blob/master/docs/product.png?raw=true)
+![Create Product](https://github.com/davemgj84/jungle-rails/blob/master/docs/create.png?raw=true)
+![Signup](https://github.com/davemgj84/jungle-rails/blob/master/docs/signup.png?raw=true)
